@@ -1,0 +1,4 @@
+<option value="">SELECT A NEWS</option>
+{% for news in newses %}
+    <option value="{{ news.id }}">{{ news.title }}</option>
+{% endfor %}

@@ -1,0 +1,24 @@
+.nav_bar ul{
+    list-style-type: none;
+    margin: 1rem 0;
+}
+.nav_bar li{
+    display: inline-block;
+    color: black;
+    line-height: 2rem;
+}
+.nav_bar li a{
+    background: none;
+    color: inherit;
+    line-height: inherit;
+    padding: 0;
+}
+.nav_bar li:nth-of-type(odd){
+    padding:0 0.5rem;
+}
+.nav_bar li:nth-of-type(even){
+}
+
+.nav_bar li:nth-of-type(odd):hover{
+    color: darkred;
+}

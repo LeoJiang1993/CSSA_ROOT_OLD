@@ -1,0 +1,33 @@
+.newsContainer {
+    height: 9rem;
+    background-size: 12rem 8rem;
+    background-position-x: 0.5rem;
+    background-position-y: 0.5rem;
+    background-repeat: no-repeat;
+    border-bottom: solid gray 2px;
+}
+.newsContainer:last-of-type{
+    border-bottom: none;
+}
+
+.newsContainerRight {
+    padding-left: 14rem;
+}
+
+.newsName {
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+
+.newsAbstract {
+    height: 4rem;
+}
+
+.newsTime {
+    text-align: right;
+    height: 1.5rem;
+    color: gray;
+    line-height: 1.5rem;
+    padding-right: 1rem;
+}

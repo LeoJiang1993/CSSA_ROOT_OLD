@@ -1,0 +1,28 @@
+<script src="/static/jquery_ui_1.12.1/jquery-ui.js"></script>
+<script src="/static/js/news/special_news_edit.js"></script>
+<form action="">
+    <h2>SELECT NEWS FROM HERE</h2>
+    <select name="topic" id="s_topic">
+        <option value="">SELECT AN TOPIC</option>
+        {% for topic in topics %}
+            <option value="{{ topic.id }}">{{ topic.description }}</option>
+        {% endfor %}
+    </select>
+    <select name="news" id="s_news">
+        <option value=""></option>
+    </select>
+    <h2>LIST</h2>
+    <ul id="news_list">
+        {% for news in newss %}
+            <li class="news_item">
+                <span hidden class="news_id">{{ news.news.id }}</span>
+                <span class="NewsTitle">{{ news.news.title }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <div id="delete_position">
+    </div>
+    <div>
+        <input type="button" id="submit_change" value="SUBMIT">
+    </div>
+</form>

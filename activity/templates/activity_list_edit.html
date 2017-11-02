@@ -1,0 +1,13 @@
+<tr>
+    <th>DESCRIPTION</th>
+    <th>TIME</th>
+    <th>OPERATIONS</th>
+</tr>
+{% for activity in activities %}
+    <tr>
+        <td>{{ activity.description }}</td>
+        <td>{{ activity.time }}</td>
+        <td><a href="/activity/admin/{{ activity.id }}">EDIT</a></td>
+        <td><a href="/activity/admin/reservedlist/{{ activity.id }}">RESERVED LIST</a></td>
+    </tr>
+{% endfor %}

@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (min-width: 1281px) {
+    .content {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .content {
+        width: 1152px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1152px) {
+    .content {
+        width: 95%;
+    }
+}
+
+@media screen and (max-device-width: 4in) {
+    .content {
+        width: 100%;
+    }
+}
+
+#header {
+    color: white;
+    line-height: 4rem;
+    font-size: 1rem;
+    background: brown;
+}
+
+div#logo {
+    display: inline-block;
+}
+
+header nav {
+    display: inline-block;
+    float: right;
+    vertical-align: top;
+}
+
+.button {
+    display: inline-block;
+    padding: 0 0.5rem;
+    color: white;
+    vertical-align: top;
+    text-align: center;
+}
+
+.button:hover {
+    color: lightcoral;
+
+}
+
+div.accountDiv {
+    height: 3rem;
+    line-height: 3rem;
+    display: none;
+    position: relative;
+    background: white;
+    text-align: right;
+    width: 100%;
+    color: black;
+}
+
+form#signInForm input[type=text],
+form#signInForm input[type=password] {
+    border: none;
+    border-bottom: 1pt gray solid;
+    background: none;
+    color: white;
+    font-size: 1rem;
+}
+
+form#signInForm input[type=text]:focus,
+form#signInForm input[type=password]:focus {
+    border-bottom: solid 1pt yellowgreen;
+}
+
+.header_list {
+    margin: 0;
+    display: none;
+    position: relative;
+    top: 0;
+left: 0rem;}
+
+
+.header_list ul {
+    background: lightcoral;
+    color: white;
+    list-style-type: none;
+    padding: 0.5rem;
+}
+
+.header_list ul li {
+    text-align: center;
+    padding: 0.5rem;
+    line-height: 1.5rem;
+}
+
+.header_list ul li:hover {
+    background: darkred;
+}
+
+#info {
+    background: lightgoldenrodyellow;
+    line-height: 1.5rem;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.infoHeader {
+    font-weight: bold;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+footer {
+    color: white;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    background: darkred;
+}

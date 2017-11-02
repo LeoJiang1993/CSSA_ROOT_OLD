@@ -1,0 +1,68 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">
+                USER
+            </th>
+            <th>CONTENT</th>
+            <th>TIME</th>
+            <th>OPERATION</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for comment in comments %}
+        <tr>
+            <td><img src="/{{ comment.author.photo }}" alt=""></td>
+            <td>{{ comment.author.nick_name }}</td>
+            <td>{{ comment.content }}</td>
+            <td>{{ comment.time }}</td>
+            {% ifequal comment.status 1 %}
+                <td class="delete_comment">
+                    DELETE
+                    <div hidden>{{ comment.id }}</div>
+                </td>
+            {% else %}
+                <td class="active_comment">
+                    ACTIVE
+                    <div hidden>{{ comment.id }}</div>
+                </td>
+            {% endifequal %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% if pages > 1 %}
+    <div class="c_pages">
+        {% if page > 1 %}
+            <div class="pg_btn">&lt;&lt;</div>
+        {% endif %}
+        {% if page  > 3 %}
+            <div class="pg_btn">1</div>
+        {% endif %}
+        {% if page > 3 %}
+            <div class="pg_btn">...</div>
+        {% endif %}
+        {% if page > 2 %}
+            <div class="pg_btn">{{ page|add:-2 }}</div>
+        {% endif %}
+        {% if page > 1 %}
+            <div class="pg_btn">{{ page|add:-1 }}</div>{% endif %}
+        <div id="c_current">{{ page }}</div>
+        {% if page|add:1 < pages %}
+            <div class="pg_btn">{{ page|add:1 }}</div>
+        {% endif %}
+        {% if page|add:2 < pages %}
+            <div class="pg_btn">{{ page|add:2 }}</div>
+        {% endif %}
+        {% if page|add:3 < pages %}
+            <div class="pg_btn">...</div>
+        {% endif %}
+        {% if page < pages %}
+            <div class="pg_btn">{{ pages }}</div>
+        {% endif %}
+        {% if page < pages %}
+            <div class="pg_btn">&gt;&gt;</div>
+        {% endif %}
+    </div>
+{% endif %}

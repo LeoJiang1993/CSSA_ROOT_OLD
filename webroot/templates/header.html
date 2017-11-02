@@ -1,0 +1,82 @@
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="/static/js/account/account.js"></script>
+<link rel="stylesheet" href="/static/css/header_and_footer.css">
+<div id="header">
+    <div class="content">
+        <div id="logo">
+            STEVENS CSSA
+        </div>
+        <nav>
+            <div class="button"><a href="/">HOME</a></div>
+            <div class="button">
+                <div>NEWS</div>
+                <div class="header_list">
+                    <ul>
+                        <li><a href="/news">TOP NEWS</a></li>
+                        {% for topic in news_topics %}
+                            <li>
+                                <a href="/newslist/{{ topic.id }}">
+                                    {{ topic.description }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="button">
+                <div>ABOUT US</div>
+                <div class="header_list">
+                    <ul>{% for news in about_us %}
+                        <li>
+                            <a href="/news/{{ news.news.id }}">
+                                {{ news.news.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% if request.session.user != None %}
+                <div class="button accountButton" id="accountButton">
+                <div>{{ request.session.user.nick_name }}</div>
+            {% else %}
+                <div class="button accountButton" id="signInButton">
+                <div>SIGN IN</div>
+            {% endif %}
+            {% if request.session.user != None %}
+                <div class="header_list" id="accountDiv">
+                    <form action="#">
+                        <input type="button" value="LOG OUT" name="logOut" id="logOut">
+                        <div><a href="/account/modify">MODIFY</a></div>
+                        <div><a href="/activity/reserved">RESERVATION</a></div>
+                    </form>
+                </div>
+            {% else %}
+                <div class="header_list" id="signInDiv">
+                    <form action="#" id="signInForm">
+                        {% csrf_token %}
+                        <span id="errorDiv"></span>
+                        <input type="text" name="userName" placeholder="USER NAME">
+                        <input type="password" name="password" placeholder="PASSWORD">
+                        <a href="/account/reset_password">Forget Password?</a>
+                        <input type="button" name="signIn" value="SIGN IN" id="signIn">
+                        <input type="button" name="signUp" value="SIGN UP" id="signUp">
+                    </form>
+                </div>
+            {% endif %}
+
+            </div>
+        </nav>
+    </div>
+</div>
+{% ifequal request.session.user.group -1 %}
+    <div id="info" class="content">
+        <div class="infoHeader">Verify your Email Address</div>
+        <div>Please check your mail box and click on the link to get full access to the website.
+            Not received?
+            <span class="resend_confirm_email">RESEND</span>
+        </div>
+        <script src="/static/js/account/send_confirm_email.js"></script>
+    </div>
+{% endifequal %}
+

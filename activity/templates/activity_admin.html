@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Admin</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="/static/js/activity/activity_admin.js"></script>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/site_admin">ADMIN</a></li>
+        <li>></li>
+        <li>ACTIVITY</li>
+    </ul>
+</section>
+<section class="content">
+
+    <select name="activity_status" id="activity_status">
+
+        <option value="">SELECT A STATUS</option>
+        {% for statue in status %}
+            <option value="{{ statue.0 }}">{{ statue.1 }}</option>
+        {% endfor %}
+    </select><a href="/activity/admin/0" style="float: right">New Activity</a>
+    <table id="activity_list">
+    </table>
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/account/modify_account.css">
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+    <link rel="stylesheet" href="/static/jquery_ui_1.12.1/jquery-ui.css">
+    <script src="/static/jquery_ui_1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('button,input[type=button],input[type=submit]').button();
+        });
+    </script>
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/">HOME</a></li>
+        <li>></li>
+        <li>MODIFY ACCOUNT</li>
+    </ul>
+</section>
+<section class="content">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="last_name" id="last_name" placeholder="LAST NAME"
+               value="{{ request.session.user.last_name }}">
+        <input type="text" name="first_name" id="first_name" placeholder="FIRST NAME"
+               value="{{ request.session.user.first_name }}">
+        <input type="text" name="nick_name" id="nick_name" placeholder="NICK NAME"
+               value="{{ request.session.user.nick_name }}">
+        <input type="file" name="photo">
+        <input type="submit" value="SUBMIT">
+    </form>
+    <a href="/account/reset_password">RESET PASSWORD</a>
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

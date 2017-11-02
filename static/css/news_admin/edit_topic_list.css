@@ -1,0 +1,9 @@
+ul{
+    list-style: none;
+}
+ul li{
+    padding: 0.5rem;
+}
+ul li:first-of-type span{
+    font-weight: bold;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Admin</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+    <link rel="stylesheet" href="/static/jquery_ui_1.12.1/jquery-ui.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="/static/jquery_ui_1.12.1/jquery-ui.js"></script>
+    <script src="/static/js/news/news_admin.js"></script>
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/site_admin">ADMIN</a></li>
+        <li>></li>
+        <li>NEWS ADMIN</li>
+    </ul>
+</section>
+<section class="editSelection content">
+    <select name="topic" id="edit_by_topic">
+        <option value="">SELECT TOPIC TO EDIT</option>
+        {% for topic in topics %}
+            <option value="{{ topic.id }}">{{ topic.description }} ({{ topic.status }})</option>
+        {% endfor %}
+    </select>
+    <select name="place" id="edit_by_place">
+        <option value="">SELECT PLACE TO EDIT</option>
+        {% for place in places %}
+            <option value="{{ place.0 }}">{{ place.1 }}</option>
+        {% endfor %}
+    </select>
+    <button>
+        <a href="/newsadmin/topic/list">Edit Topic List</a>
+    </button>
+    <button>
+        <a href="/newsadmin/editnews/0">ADD NEWS</a>
+    </button>
+</section>
+<section id="editSection" class="content">
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

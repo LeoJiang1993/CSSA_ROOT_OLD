@@ -1,0 +1,28 @@
+#site_map {
+    background: lightcoral;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+#site_map dl {
+}
+
+.site_map_column {
+    padding-left: 1rem;
+    vertical-align: top;
+    width: 30%;
+    display: inline-block;
+    min-width: 20rem;
+    max-width: 100%;
+}
+
+dt {
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 2rem;
+}
+
+dd {
+    padding-left: 1.5rem;
+    line-height: 2rem;
+}

@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/static/css/pager.css">
+<h2>COMMENTS</h2>
+<div class="add_comment">
+    <button id="add_comment">
+        ADD COMMENT
+    </button>
+    <form action="" method="get" id="add_comment_form" style="display: none">
+        <img src="/{{ request.session.user.photo }}" alt="">
+        <div>{{ request.session.user.nick_name }}</div>
+        <input type="text" name="content">
+        <input type="button" value="SUBMIT" id="submit_comment">
+        <input type="button" value="CANCEL" id="cancel_comment">
+    </form>
+</div>
+{% for comment in comments %}
+    <img src="/{{ comment.author.photo }}" alt="">
+    <div>{{ comment.author.nick_name }}</div>
+    <div>{{ comment.content }}</div>
+    <div>{{ comment.time }}</div>
+    {% if request.session.user.group > 0 %}
+
+        <div class="delete_comment">
+            DELETE
+            <div hidden>{{ comment.id }}</div>
+        </div>
+    {% endif %}
+{% endfor %}
+{% if pages > 1 %}
+    <div class="c_pages">
+        {% if page > 1 %}
+            <div class="pg_btn"><<</div>
+        {% endif %}
+        {% if page  > 3 %}
+            <div class="pg_btn">1</div>
+        {% endif %}
+        {% if page > 3 %}
+            <div class="pg_btn">...</div>
+        {% endif %}
+        {% if page > 2 %}
+            <div class="pg_btn">{{ page|add:-2 }}</div>
+        {% endif %}
+        {% if page > 1 %}
+            <div class="pg_btn">{{ page|add:-1 }}</div>{% endif %}
+        <div id="c_current">{{ page }}</div>
+        {% if page|add:1 < pages %}
+            <div class="pg_btn">{{ page|add:1 }}</div>
+        {% endif %}
+        {% if page|add:2 < pages %}
+            <div class="pg_btn">{{ page|add:2 }}</div>
+        {% endif %}
+        {% if page|add:3 < pages %}
+            <div class="pg_btn">...</div>
+        {% endif %}
+        {% if page < pages %}
+            <div class="pg_btn">{{ pages }}</div>
+        {% endif %}
+        {% if page < pages %}
+            <div class="pg_btn">>></div>
+        {% endif %}
+    </div>
+{% endif %}

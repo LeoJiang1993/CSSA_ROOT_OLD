@@ -1,0 +1,12 @@
+.c_pages{
+    padding-left: 1rem;
+}
+.c_pages div{
+    display: inline-block;
+    padding: 0.25rem;
+    border: 1px gray solid;
+}
+
+#c_current{
+    background: darkgray;
+}

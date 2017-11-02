@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/js/ckeditor/contents.css">
+    <link rel="stylesheet" href="/static/css/news.css">
+    <link rel="stylesheet" href="/static/css/header_and_footer.css">
+</head>
+<body>
+<section class="content">
+    <div id="newsTitle">{{ news_context.title }}</div>
+    <div id="author">{{ news_context.author }}</div>
+    <div id="viewed">VIEWED: {{ news_context.viewed }}</div>
+    <div id="time">{{ news_context.time_created }}</div>
+    <img id="banner" src="/{{ news_context.banner }}"/>
+    <div id="content">{{ news_context.content|safe }}</div>
+</section>
+</body>
+</html>

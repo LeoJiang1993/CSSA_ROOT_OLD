@@ -1,0 +1,10 @@
+<div class="sign_in" id="sign_in_activity">
+    <form action="#" id="signInForm">
+        {% csrf_token %}
+        <span id="errorDiv"></span>
+        <input type="text" name="u_name" placeholder="USER NAME">
+        <input type="password" name="pwd" placeholder="PASSWORD">
+        <input type="button" name="sign_in" value="SIGN IN" id="signIn">
+        <input type="button" name="signUp" value="SIGN UP" id="signUp">
+    </form>
+</div>

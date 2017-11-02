@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/news_list.css"/>
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+    <script src="/static/js/news/news_list.js"></script>
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/news">NEWS</a></li>
+        <li>></li>
+        <li>{{ news_topic }}</li>
+    </ul>
+</section>
+<section>
+    <link rel="stylesheet" href="/static/css/pager.css">
+    <div class="content">
+        <div id="news_list" style="display: none">{{ news_topic_id }}</div>
+        <div class="topicList">
+            <h3>TOPICS</h3>
+            <ul>
+                <li><a href="/news">TOPS</a></li>
+                {% for topic in topics %}
+                    <li><a href="/newslist/{{ topic.id }}">{{ topic.description }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

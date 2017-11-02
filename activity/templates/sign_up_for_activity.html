@@ -1,0 +1,16 @@
+<div>{{ activity.description }}</div>
+<div>
+    {{ activity.get_status_display }}
+</div>
+{# todo: 查booked人数 #}
+<div>RESERVED {{ booked }}/{{ activity.capacity }}</div>
+<div id="activity_id" hidden>{{ activity.id }}</div>
+{% ifequal activity.status 1 %}
+    {% if booked < activity.capacity %}
+        {% if reserved %}
+            <button id="a_cancel">CANCEL</button>
+        {% else %}
+            <button id="a_reserve">RESERVE</button>
+        {% endif %}
+    {% endif %}
+{% endifequal %}

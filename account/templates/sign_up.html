@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SIGN UP</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="/static/js/account/sign_up.js"></script>
+    <link rel="stylesheet" href="/static/css/signUp.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/">HOME</a></li>
+        <li>></li>
+        <li>CREATE ACCOUNT</li>
+    </ul>
+</section>
+<section class="content">
+    <form action="#" id="signUpForm" method="post" target="callback" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="email" pattern="" placeholder="EMAIL">
+        <input type="text" name="signUpUserName" id="userName" placeholder="USER NAME">
+        <input type="text" name="last_name" id="last_name" placeholder="LAST NAME">
+        <input type="text" name="first_name" id="first_name" placeholder="FIRST NAME">
+        <input type="password" name="signUpPassword" placeholder="PASSWORD">
+        <input type="password" name="passwordRepeat" placeholder="REPEAT PASSWORD">
+        <input type="text" name="nickName" placeholder="NICK NAME">
+        <input type="file" name="photo" id="photo" placeholder="PHOTO">
+        <input type="button" value="SIGN UP" id="signUpBtn" name="signUpBtn" class="signUpBtn">
+    </form>
+</section>
+{% include "footer.html" %}
+</body>
+</html>

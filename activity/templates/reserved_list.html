@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="content">
+    <h2>ACTIVITY NAME: {{ activity.description }}</h2>
+    <table>
+        <tr>
+            <th>
+                Email
+            </th>
+            <th>
+                NICK NAME
+            </th>
+            <th>
+                Checked In
+            </th>
+        </tr>
+        {% for reserved in reserved_list %}
+            <tr>
+                <td>
+                    {{ reserved.account.email }}
+                </td>
+                <td>
+                    {{ reserved.account.nick_name }}
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

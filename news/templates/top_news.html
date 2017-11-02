@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/news_list.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="content">
+    <div class="topicList">
+        <h3>TOPICS</h3>
+        <ul>
+            <li><a href="/news">TOPS</a></li>
+            {% for topic in topics %}
+                <li><a href="/newslist/{{ topic.id }}">{{ topic.description }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <h1>NEWS</h1>
+    {% for news in newss %}
+        <div>{{ news.news.title }}</div>
+    {% endfor %}
+</section>
+
+{% include 'footer.html' %}
+</body>
+</html>

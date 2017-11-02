@@ -1,0 +1,50 @@
+table {
+    line-height: 1.5rem;
+}
+
+h1 {
+    line-height: 4rem;
+    font-size: 2rem;
+}
+
+h2 {
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+
+section form input {
+    width: 30rem;
+    max-width: 100%;
+}
+
+.editorBlock {
+    padding: 1rem;
+}
+
+label {
+    display: inline-block;
+    min-width: 10rem;
+    max-width: 30%;
+    text-align: right;
+    padding: 0 1rem;
+}
+
+
+#news_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    min-width: 20rem;
+    max-width: 100%;
+    display: inline-block;
+}
+.news_item{
+    display: block;
+    width: 100%;
+}
+#delete_position{
+    width: 20rem;
+    height: inherit;
+    display: inline-block;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+    <script src="/static/js/news/news_topic_edit.js"></script>
+    <link rel="stylesheet" href="/static/css/news_admin/edit_topic_list.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/site_admin">ADMIN</a></li>
+        <li>></li>
+        <li><a href="/newsadmin">NEWS ADMIN</a></li>
+        <li>></li>
+        <li>EDIT NEWS TOPICS</li>
+    </ul>
+</section>
+<section class="content">
+
+    <ul>
+        <li>
+            <span>TOPIC</span>
+            <span>STATUS</span>
+        </li>
+        {% for topic in topics %}
+            <li>
+                <input type="text" name="description" value="{{ topic.description }}" placeholder="TOPIC NAME">
+                <select name="status" id="">
+                    <option value="True"
+                            {% ifequal topic.status True %}
+                            selected
+                            {% endifequal %}>
+                        ONLINE
+                    </option>
+                    <option value="False"
+                            {% ifequal topic.status False %}
+                            selected
+                            {% endifequal %}>
+                        OFFLINE
+                    </option>
+                </select>
+                <input type="button" class="modify" value="MODIFY" name="{{ topic.id }}">
+            </li>
+        {% endfor %}
+        <li hidden>
+            <input type="text" value="" name="description" placeholder="TOPIC NAME">
+            <select name="status" id="">
+                <option value="True" selected>
+                    ONLINE
+                </option>
+                <option value="False">
+                    OFFLINE
+                </option>
+            </select>
+            <input type="button" class="modify" value="MODIFY" name="0">
+        </li>
+
+    </ul>
+
+    <input type="button" name="new_topic" value="NEW TOPIC">
+
+
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

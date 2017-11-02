@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments Admin</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="/static/js/comment/comment_admin.js"></script>
+    <link rel="stylesheet" href="/static/css/pager.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <link rel="stylesheet" href="/static/css/nav_bar.css">
+        <li><a href="/site_admin">ADMIN</a></li>
+        <li>></li>
+        <li>NEWS COMMENT</li>
+    </ul>
+</section>
+<section class="content">
+    <form>
+        <select name="topic" id="topic">
+            <option value="">SELECT A TOPIC</option>
+            {% for t in topics %}
+                <option value="{{ t.id }}"
+                        {% ifequal news.topic_id t.id %}selected{% endifequal %}>
+                    {{ t.description }}
+                </option>
+            {% endfor %}
+        </select>
+        <select name="news" id="news">
+            <option value="">SELECT A NEWS</option>
+            {% for n in newses %}
+                <option value="{{ n.id }}"
+                        {% ifequal news.id n.id %}
+                        selected
+                        {% endifequal %}
+                >
+                    {{ n.title }}
+                </option>
+            {% endfor %}
+        </select>
+        <select name="comment_status" id="comment_status">
+            <option value="">
+                SELECT A COMMENT STATUS
+            </option>
+            <option value="0" {% ifequal status 0 %}selected{% endifequal %}>
+                ALL
+            </option>
+            <option value="1" {% ifequal status 1 %}selected{% endifequal %}>
+                NORMAL
+            </option>
+            <option value="2" {% ifequal status 2 %}selected{% endifequal %}>
+                BLOCKED
+            </option>
+        </select>
+    </form>
+</section>
+<section id="comment_list" class="content">
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RESERVATIONS</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+    <ul>
+        <li><a href="/">HOME</a></li>
+        <li>></li>
+        <li>MANAGE RESERVATION</li>
+    </ul>
+</section>
+<section class="content">
+    {% ifequal reservations.count 0 %}
+        <h1>OOPS! It seems that you haven't Enrolled in any Event.</h1>
+    {% else %}
+        <table>
+            <thead>
+            <tr>
+                <th>ACTIVITY NAME</th>
+                <th>CANCEL</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.activity.description }}
+                    </td>
+                    <td>
+                        <a href="/activity/reserve?operation=cancel&activity_id={{ reservation.activity.id }}">
+                            CANCEL RESERVATION
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>{% endifequal %}
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

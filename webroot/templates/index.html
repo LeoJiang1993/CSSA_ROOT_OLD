@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+    <link rel="stylesheet" href="/static/css/newsList.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+
+</head>
+<body>
+
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+{% ifnotequal info None %}
+    <div id="info" class="content">
+        {{ info|safe }}
+    </div>
+{% endifnotequal %}
+<section id="topNews">
+    top_news_bar_section.
+    {% for news in bar_newss %}
+        <div class="newsContainer content">
+            <div class="newsContainerRight">
+                <div class="newsName"><a href="/news/{{ news.news.id }}">{{ news.news.title }}</a></div>
+                <div class="newsAbstract">should be abstract.{{ news.news.author }}</div>
+                <div class="newsTime">{{ news.news.time_created }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+<section id="indexNewsList">
+    index news section.
+    {% for news in newss %}
+        <div class="newsContainer content">
+            <div class="newsContainerRight">
+                <div class="newsName"><a href="/news/{{ news.news.id }}">{{ news.news.title }}</a></div>
+                <div class="newsAbstract">should be abstract.{{ news.news.author }}</div>
+                <div class="newsTime">{{ news.news.time_created }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+<section id="site_map">
+    <dl class="content">
+        <div class="site_map_column">
+            <dt>NEWS AND ACTIVITIES</dt>
+            <dd>Topics</dd>
+
+        </div>
+        <div class="site_map_column">
+            <dt>ABOUT US</dt>
+            <dd>TTT</dd>
+            <dt>Connect Us</dt>
+            <dd>Varies</dd>
+        </div>
+        <div class="site_map_column">
+            <dt>FRIENDLY LINKS</dt>
+            <dd>Test1111</dd>
+            <dd>Test1111</dd>
+            <dd>Test1111</dd>
+            <dd>Test1111</dd>
+        </div>
+    </dl>
+</section>
+{% include "footer.html" %}
+</body>
+</html>

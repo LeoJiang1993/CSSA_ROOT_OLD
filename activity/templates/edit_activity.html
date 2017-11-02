@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/site_admin">ADMIN</a></li>
+        <li>></li>
+        <li><a href="/activity/admin">ACTIVITY</a></li>
+        <li>></li>
+        <li>EDIT ACTIVITY</li>
+    </ul>
+</section>
+<section class="content">
+    <form action="" method="get">
+        <input type="hidden" name="id"
+               value="{% if activity.id %}{{ activity.id }}{% else %}0{% endif %}">
+        <div class="editorBlock">
+            <label for="description">DESCRIPTION</label>
+            <input type="text" id="description" name="description" value="{{ activity.description }}" autofocus>
+        </div>
+        <div class="editorBlock">
+            <label for="status">STATUS</label>
+            <select name="status" id="status">
+                <option value="">SELECT A STATUS</option>
+                {% for statue in status %}
+                    <option value="{{ statue.0 }}"
+                            {% ifequal statue.0 activity.status.id %}
+                            selected
+                            {% endifequal %}
+                    >{{ statue.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="editorBlock">
+            <label for="time">TIME</label>
+            <input type="datetime-local" name="time" id="time"
+                   value="{{ activity.time.year }}-{% if activity.time.month < 10 %}0{% endif %}{{ activity.time.month }}-{% if activity.time.day < 10 %}0{% endif %}{{ activity.time.day }}T{{ activity.time.hour }}:{% if activity.time.minute < 10 %}0{% endif %}{{ activity.time.minute }}:{% if activity.time.second < 10 %}0{% endif %}{{ activity.time.second }}">
+        </div>
+        <div class="editorBlock">
+            <label for="capacity">CAPACITY</label>
+            <input type="number" id='capacity' name="capacity" value="{{ activity.capacity }}">
+        </div>
+        <div class="editorBlock">
+            <label for=""></label>
+            <input type="submit" value="SUBMIT">
+        </div>
+    </form>
+</section>
+{% include 'footer.html' %}
+</body>
+</html>

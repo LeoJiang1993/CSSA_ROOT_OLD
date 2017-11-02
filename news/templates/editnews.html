@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+    <script src="/static/js/ckeditor/ckeditor.js"></script>
+    <script src="/static/js/ckeditor/adapters/jquery.js"></script>
+    <script src="/static/js/news/news_editor.js"></script>
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/site_admin">ADMIN</a></li>
+        <li>></li>
+        <li><a href="/newsadmin">NEWS ADMIN</a></li>
+        <li>></li>
+        <li>EDIT NEWS</li>
+    </ul>
+</section>
+<form action="/newsadmin/editnews/{% if news is None %}0{% else %}{{ news.id }}{% endif %}" method="post"
+      id="newsEditor" class="content" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% ifnotequal news None %}
+        <input type="hidden" name="id" value="{{ news.id }}">
+    {% else %}
+        <input type="hidden" name="id" value="0">
+    {% endifnotequal %}
+    <div class="editorBlock">
+        <label for="topic">TOPIC</label>
+        <select name="topic" id="topic">
+            <option value="">SELECT A TOPIC</option>
+            {% for topic in topics %}
+                <option value="{{ topic.id }}"
+                        {% ifequal topic.id news.topic.id %}selected{% endifequal %}
+                >{{ topic.description }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="editorBlock">
+        <label for="title">TITLE</label>
+        <input type="text" name="title" id='title' value="{{ news.title }}">
+    </div>
+    <div class="editorBlock">
+        <label for="author">AUTHOR</label>
+        <input type="text" name="author" id="author" value="{{ news.author }}">
+    </div>
+    <div class="editorBlock">
+        <label for="status">STATUS</label>
+        <select name="status" id="status">
+            <option value="">SELECT A STATUE</option>
+            {% for i in status %}
+                <option value="{{ i.0 }}"
+                        {% ifequal i.0 news.status %}
+                        selected
+                        {% endifequal %}
+                >{{ i.1 }}</option>
+            {% endfor %}
+        </select>
+        <label for="activity">ACTIVITY</label>
+        <select name="activity" id="activity">
+            <option value="">SELECT AN ACTIVITY</option>
+            {% for activity in activities %}
+                <option value="{{ activity.id }}"
+                        {% ifequal activity.id news.activity.id %}selected{% endifequal %}
+                >{{ activity.description }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="editorBlock">
+        <label for="banner">BANNER</label>
+        <input type="file" id='banner' name="banner" value="{{ news.banner }}">
+    </div>
+    <div class="editorBlock">
+        <img src="/{{ news.banner }}" alt="{{ news.title }}" width="100%">
+    </div>
+    <div class="editorBlock">
+        <label for="comment">
+            COMMENT
+        </label>
+        <input type="checkbox" name="comment" id="comment" {% if news.has_comment %}checked{% endif %}>
+    </div>
+    <div class="editorBlock">
+        <label for="editor">CONTENT</label>
+        <textarea name="content" id="editor">{{ news.content|safe }}</textarea>
+    </div>
+    <div class="editorBlock">
+        <input type="button" id="submit" name="submit" value="SUBMIT">
+    </div>
+</form>
+{% include 'footer.html' %}
+</body>
+</html>

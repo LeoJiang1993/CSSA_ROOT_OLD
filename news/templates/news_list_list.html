@@ -1,0 +1,41 @@
+<ul>
+    {% for news in newses %}
+        <li>
+            <a href="/news/{{ news.id }}">{{ news.title }}</a><span>{{ news.author }}</span>
+        </li>
+    {% endfor %}
+</ul>
+{% if pages > 1 %}
+    <div class="c_pages">
+        {% if page > 1 %}
+            <div class="pg_btn"><<</div>
+        {% endif %}
+        {% if page  > 3 %}
+            <div class="pg_btn">1</div>
+        {% endif %}
+        {% if page > 3 %}
+            <div class="pg_btn">...</div>
+        {% endif %}
+        {% if page > 2 %}
+            <div class="pg_btn">{{ page|add:-2 }}</div>
+        {% endif %}
+        {% if page > 1 %}
+            <div class="pg_btn">{{ page|add:-1 }}</div>{% endif %}
+        <div id="c_current">{{ page }}</div>
+        {% if page|add:1 < pages %}
+            <div class="pg_btn">{{ page|add:1 }}</div>
+        {% endif %}
+        {% if page|add:2 < pages %}
+            <div class="pg_btn">{{ page|add:2 }}</div>
+        {% endif %}
+        {% if page|add:3 < pages %}
+            <div class="pg_btn">...</div>
+        {% endif %}
+        {% if page < pages %}
+            <div class="pg_btn">{{ pages }}</div>
+        {% endif %}
+        {% if page < pages %}
+            <div class="pg_btn">>></div>
+        {% endif %}
+    </div>
+{% endif %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <link rel="stylesheet" href="/static/css/header_and_footer.css">
+
+    <link rel="stylesheet" href="/static/css/nav_bar.css">
+</head>
+<body>
+
+<header>
+</header>
+<script src="/static/js/header.js"></script>
+
+<section class="nav_bar content">
+    <ul>
+        <li><a href="/news">NEWS</a></li>
+        <li>></li>
+        <li><a href="/newslist/{{ news_context.topic.id }}">{{ news_context.topic.description }}</a></li>
+        <li>></li>
+        <li>{{ news_context.title }}</li>
+    </ul>
+</section>
+<iframe src="/news/content/{{ news_context.id }}" id="news_content" frameborder="0"
+        width="100%" onload="changeFrameHeight()"></iframe>
+<script src="/static/js/news/news.js"></script>
+{% ifnotequal news_context.activity.id 1 %}
+    <script src="/static/js/activity/news_view.js"></script>
+    <section class="content" id="activity">
+        {{ news_context.activity.id }}
+    </section>
+{% endifnotequal %}
+{% if news_context.has_comment %}
+    <script src="/static/js/comment/comments.js"></script>
+    <section id="comment" class="content">
+        {{ news_context.id }}
+    </section>
+{% endif %}
+{% include "footer.html" %}
+</body>
+</html>
