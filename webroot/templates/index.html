@@ -26,6 +26,7 @@
     {% for news in bar_newss %}
         <div class="newsContainer content">
             <div class="newsContainerRight">
+                <img src="/{{ news.news.banner }}" alt="" height="20px" width="50px">
                 <div class="newsName"><a href="/news/{{ news.news.id }}">{{ news.news.title }}</a></div>
                 <div class="newsAbstract">should be abstract.{{ news.news.author }}</div>
                 <div class="newsTime">{{ news.news.time_created }}</div>

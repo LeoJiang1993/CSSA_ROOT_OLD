@@ -9,7 +9,7 @@ from CSSA_ROOT.util.authority_decorators import *
 # Create your views here.
 from account.util.send_password_reset_email import send_password_reset_email
 from webroot.views import index
-
+from account.util import account_info_format
 
 def sign_up(request):
     return render(request, "sign_up.html")
@@ -19,14 +19,22 @@ def sign_up(request):
 @post
 def create_account(request):
     form = CreateAccount(request.POST, request.FILES)
+    context = {}
     if form.is_valid():
         user_name = form.cleaned_data['user_name']
         password = form.cleaned_data['password']
+        if account_info_format.check_password_format(password):
+            context['password'] = 'Error'
         nick_name = form.cleaned_data['nick_name']
         photo = form.cleaned_data['photo']
         email = form.cleaned_data['email']
+        email.lower()
+        if account_info_format.check_email_format(email):
+            context['email'] = 'Error'
         last_name = form.cleaned_data['last_name']
         first_name = form.cleaned_data['first_name']
+        if context is not {}:
+            return context
         user = Account.create_account(user_name, password, nick_name, photo, email, last_name, first_name)
         request.session['user'] = user
         if request.session['user'] is not None & send_confirmation_email(user):
